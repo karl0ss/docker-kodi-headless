@@ -186,7 +186,10 @@ COPY root/ /
 COPY --from=buildstage /tmp/kodi-build/usr/ /usr/
 COPY --from=buildstage /usr/bin/kodi-send /usr/bin/kodi-send
 COPY --from=buildstage /usr/lib/python2.7/xbmcclient.py /usr/lib/python2.7/xbmcclient.py
+COPY advancedsettings.xml.default /config/.kodi/userdata/advancedsettings.xml.default
+COPY kodi_init /sbin/kodi_init
 
 # ports and volumes
 VOLUME /config/.kodi
 EXPOSE 8080 9090 9777/udp
+CMD ["/sbin/kodi_init"]
